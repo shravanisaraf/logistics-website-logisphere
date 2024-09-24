@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiSphere - Signup/Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAE2E4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            color: #1E5DAC;
+            font-size: 36px; /* Increased font size */
+            font-weight: bold; /* Make it bold */
+        }
+
+        .role-selection {
+            margin-bottom: 20px;
+        }
+
+        .role-selection h2 {
+            color: #1E5DAC;
+            font-family: 'Arial', sans-serif; /* Change the font style */
+            font-size: 24px; /* Adjust the font size */
+            margin-bottom: 10px; /* Add some space below the title */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #1E5DAC;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #B7C5DA;
+            transform: scale(1.05);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            background-color: #B7C5DA; /* Signup box color */
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #1E5DAC; /* Title color */
+            font-weight: bold; /* Bold text */
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            transition: border 0.3s;
+            background-color: white; /* Input background color */
+            color: black; /* Input text color */
+        }
+
+        input::placeholder {
+            color: #999; /* Placeholder text color */
+        }
+
+        input:focus {
+            border: 1px solid #1E5DAC;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #1E5DAC; /* Updated button color */
+            color: white; /* Button text color */
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold; /* Bold text */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #B7C5DA;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-button {
+            font-size: 16px;
+            color: white;
+            background-color: #1E5DAC;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-top: 20px; /* Margin above the button */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: block; /* Make it a block element */
+            max-width: 150px; /* Set a maximum width */
+            margin-left: auto; /* Center the button */
+            margin-right: auto; /* Center the button */
+        }
+
+        .back-button:hover {
+            background-color: #B7C5DA;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LogiSphere</h1>
+        <div id="roleSelection" class="role-selection">
+            <h2>Select Role</h2>
+            <button onclick="showUserOptions()">User</button>
+            <button onclick="showAdminOptions()">Admin</button>
+        </div>
+
+        <div id="optionsBox" style="display:none;">
+            <div id="userOptions" style="display:none;">
+                <h2>User Options</h2>
+                <button onclick="showSignupForm()">User Signup</button>
+                <button onclick="showLoginForm()">User Login</button>
+            </div>
+
+            <div id="adminOptions" style="display:none;">
+                <h2>Admin Options</h2>
+                <button onclick="showSignupForm()">Admin Signup</button>
+                <button onclick="showLoginForm()">Admin Login</button>
+            </div>
+
+            <div id="signupForm" style="display:none;">
+                <h2>Signup Form</h2>
+                <form>
+                    <input type="text" placeholder="Username" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="submit" value="Signup">
+                </form>
+            </div>
+
+            <div id="loginForm" style="display:none;">
+                <h2>Login Form</h2>
+                <form>
+                    <input type="text" placeholder="Username" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+
+        <button class="back-button" onclick="hideForms()" style="display:none;">Back</button>
+    </div>
+    
+    <script>
+        function showUserOptions() {
+            document.getElementById('roleSelection').style.display = 'none';
+            document.getElementById('optionsBox').style.display = 'block';
+            document.getElementById('userOptions').style.display = 'block';
+            document.getElementById('adminOptions').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            document.querySelector('.back-button').style.display = 'block'; // Show back button
+        }
+
+        function showAdminOptions() {
+            document.getElementById('roleSelection').style.display = 'none';
+            document.getElementById('optionsBox').style.display = 'block';
+            document.getElementById('adminOptions').style.display = 'block';
+            document.getElementById('userOptions').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            document.querySelector('.back-button').style.display = 'block'; // Show back button
+        }
+
+        function showSignupForm() {
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('userOptions').style.display = 'none';
+            document.getElementById('adminOptions').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('userOptions').style.display = 'none';
+            document.getElementById('adminOptions').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+        }
+
+        function hideForms() {
+            document.getElementById('roleSelection').style.display = 'block';
+            document.getElementById('optionsBox').style.display = 'none';
+            document.getElementById('userOptions').style.display = 'none';
+            document.getElementById('adminOptions').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            document.querySelector('.back-button').style.display = 'none'; // Hide back button
+        }
+    </script>
+</body>
+</html>
